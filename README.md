@@ -43,8 +43,6 @@ flutter_app/
 
 ## 🧩 Adding Routes
 
-To add new routes to the application, update the `lib/routes/app_routes.dart` file:
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:package_name/presentation/home_screen/home_screen.dart';
