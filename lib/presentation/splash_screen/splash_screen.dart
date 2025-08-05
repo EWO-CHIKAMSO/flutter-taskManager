@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:taskflow_pro/presentation/splash_screen/login.dart';
 
 import '../../core/app_export.dart';
 
@@ -68,7 +69,8 @@ class _SplashScreenState extends State<SplashScreen>
       await Future.delayed(const Duration(milliseconds: 500));
 
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/home-screen');
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
+       // Navigator.pushReplacementNamed(context, '/home-screen');
       }
     } catch (e) {
       // Handle initialization errors gracefully

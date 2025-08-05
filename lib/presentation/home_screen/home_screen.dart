@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -21,13 +22,31 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Map<String, dynamic>? _selectedProject;
   OverlayEntry? _overlayEntry;
 
-  // Mock user data
-  final Map<String, dynamic> _userData = {
-    "name": "Sarah Johnson",
-    "email": "sarah.johnson@email.com",
-    "avatar":
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+// Get the current Firebase user
+User? get _firebaseUser => FirebaseAuth.instance.currentUser;
+
+// Get current user data as a map
+Map<String, dynamic> get _userData {
+  final user = _firebaseUser;
+  return {
+    "name": user?.displayName ?? "User",
+    "email": user?.email ?? "no-email",
+    "avatar": user?.photoURL ??
+        "https://ui-avatars.com/api/?name=${Uri.encodeComponent(user?.displayName ?? "User")}&background=random",
   };
+}
+  User? get _currentUser => FirebaseAuth.instance.currentUser;
+  User? get _user => _currentUser;
+  String get _userName => _user?.displayName ?? 'User';
+  String get _userEmail => _user?.email ?? 'no-email';
+  String get _userAvatar =>
+      _user?.photoURL ??
+      "https://ui-avatars.com/api/?name=${Uri.encodeComponent(_userName)}&background=random";
+  Map<String, dynamic> get userData => {
+        "name": _userName,
+        "email": _userEmail,
+        "avatar": _userAvatar,
+      };
 
   // Mock projects data
   final List<Map<String, dynamic>> _projects = [
@@ -258,6 +277,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ),
       ),
       floatingActionButton: _buildFloatingActionButtons(),
+      
     );
   }
 
@@ -339,17 +359,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
         // Main Project FAB
         FloatingActionButton.extended(
-          heroTag: "newProject",
-          onPressed: _createNewProject,
+          heroTag: "ai assistant",
+          onPressed:()=> Navigator.pushNamed(context, '/ai-assistant-screen'),
           backgroundColor: AppTheme.lightTheme.colorScheme.primary,
           foregroundColor: AppTheme.lightTheme.colorScheme.onPrimary,
           icon: CustomIconWidget(
-            iconName: 'add',
+            iconName: 'Ai',
             color: AppTheme.lightTheme.colorScheme.onPrimary,
             size: 24,
           ),
           label: Text(
-            'New Project',
+            'Ai Assistant',
             style: AppTheme.lightTheme.textTheme.labelLarge?.copyWith(
               color: AppTheme.lightTheme.colorScheme.onPrimary,
               fontWeight: FontWeight.w600,

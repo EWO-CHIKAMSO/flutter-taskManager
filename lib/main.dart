@@ -1,7 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:taskflow_pro/firebase_options.dart';
 import '../core/app_export.dart';
 import '../widgets/custom_error_widget.dart';
 
@@ -14,7 +15,11 @@ void main() async {
       errorDetails: details,
     );
   };
-  // 🚨 CRITICAL: Device orientation lock - DO NOT REMOVE
+
+         await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform, // Use the generated options
+      );
+  // CRITICAL: Device orientation lock
   Future.wait([
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
   ]).then((value) {
@@ -33,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
-        // 🚨 CRITICAL: NEVER REMOVE OR MODIFY
+   
         builder: (context, child) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(
@@ -42,7 +47,7 @@ class MyApp extends StatelessWidget {
             child: child!,
           );
         },
-        // 🚨 END CRITICAL SECTION
+     
         debugShowCheckedModeBanner: false,
         routes: AppRoutes.routes,
         initialRoute: AppRoutes.initial,

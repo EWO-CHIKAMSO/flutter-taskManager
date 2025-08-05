@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "575360247822",
+    "project_id": "task-manager-fec98",
+    "storage_bucket": "task-manager-fec98.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575360247822:android:a444dc1c20ee7af62a345f",
+        "android_client_info": {
+          "package_name": "com.taskflow_pro.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9cw2NXB0CU1xZrI3l9NlgQNKq9tnyPpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575360247822:android:14195c7925d59a5f2a345f",
+        "android_client_info": {
+          "package_name": "com.taskflow_pro.taskflow_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9cw2NXB0CU1xZrI3l9NlgQNKq9tnyPpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
