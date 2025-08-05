@@ -13,9 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.22.1' # or whatever you're using
+     
 
       - run: flutter pub get
 
